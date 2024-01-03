@@ -92,6 +92,12 @@
         form = document.forms['permintaan-barang-bps']
         const loading = document.getElementById("loading")
         const button = document.getElementById("submit")
+        const namaBarang = document.getElementById('namaBarang')
+        const merk = document.getElementById("merk/Type")
+        const jumlah = document.getElementById("jumlah")
+        const keterangan = document.getElementById("keterangan")
+        const peminta = document.getElementById("peminta")
+        const tim = (document.getElementById('untukTim')) 
         
 
         form.addEventListener('submit', e =>{
@@ -105,7 +111,7 @@
             e.preventDefault()
             fetch(scriptUrl, {redirect: "follow", method: 'POST', 
             body: formData})
-            .then(response => {console.log('Berhasil!!!! ', response),loading.classList.remove("loader"),alert('Berhasil Meminta Data dengan keterangan:\nNama Barang :\nMerk/Tipe:\nJumlah:\nKeterangan:'),button.removeAttribute("disabled"),form.reset()})
+            .then(response => {console.log('Berhasil!!!! ', response),loading.classList.remove("loader"),alert('Berhasil meminta barang dengan keterangan:\nNama Barang: '+namaBarang.value+'\nMerk/Tipe: '+merk.value+'\nJumlah: '+jumlah.value+'\nKeterangan: '+keterangan.value+'\nPeminta: '+peminta.value+'\nUntuk Tim: '+tim.options[(document.getElementById('untukTim')).selectedIndex].text),button.removeAttribute("disabled"),form.reset()})
             .catch(error => console.log('Error!', error.message))
         })
     </script>
